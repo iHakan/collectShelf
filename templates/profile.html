@@ -1,0 +1,125 @@
+{% extends "layout.html" %}
+
+{% block css%}
+
+<link href="/static/profile.css" rel="stylesheet">
+<link rel="stylesheet" href="/static/todo.css">
+{% endblock %}
+
+{% block title %}
+    Profile
+{% endblock %}
+
+{% block main %}
+    <!--Left Side-->
+    <div class="profileContainer">
+        <div id="left-column">
+            {% if userList %}
+            <div>
+                <h2>Welcome, {{ userList[0]["username"] }}! </h2>
+                <p id="unchange">{{ userList[0]["email"] }} </p>
+            </div>
+                <p>User ID: #{{iD}}</p>
+                <p>Enjoy your shelf!</p>
+            {% else %}
+                <p>Welcome, Guest #{{iD}} </p>
+                <p>Enjoy your shelf!</p>
+            {% endif %}
+        <div class="mini-todo-container">
+            <h3>Mini Todo</h3>
+            <form id="todo" action="/todo" method="post">
+                <!--LIST OF TODOS-->
+                {% if not todoList %}
+                <ul>
+                    <li id="todo-message">Add a New Todo Here</li>
+                </ul>
+                {% else %}
+                <ul id="ul-list">
+                    <!--FOR LOOP HERE-->
+                    {% for todo in todoList %}
+                    <li>
+                        <input id="checkbox" type="checkbox" name="checkbox" onclick="checkBox()">
+                        <label id="checkbox-label" for="checkbox">{{ todo['task'] }}</label>
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                <!--INPUT TEXT AND BUTTON-->
+                <input type="text" name="newTodo" id="newTodo" placeholder="Write todo">
+                <button id="newTodo-btn" class="btn btn-primary" disabled formaction="/todo" onclick="bubbleSound()">Add</button>
+            </form>
+        </div>
+        </div>
+        <!--Right Side-->
+        <div id="right-column">
+            <!--HEADER -->
+            <div id="userHeader">
+                <h3>User Info</h3>
+                <p>Personal Information</p>
+            </div>
+            <div id="userInfo">
+                <form class="info-form"action="/info-change" method="post">
+                    <fieldset class="field">
+                        <label for="email">Email</label>
+                        <input id="email" name="email" type="email" placeholder="Email Address" value="{{ userList[0]["email"] }}">
+                    </fieldset>
+                    <fieldset class="field">
+                        <label for="username">Username</label>
+                        <input id="username" name="username" type="text" placeholder="Username" value="{{ userList[0]["username"] }}">
+                    </fieldset>
+                    <div>
+                        <button id="form-button"class="btn btn-primary"onclick="bubbleSound()">SAVE</button>
+                    </div>
+                </form>
+            </div>
+
+            <!--HEADER -->
+            <div id="userHeader">
+                <h3>Secure Info</h3>
+                <p>Security Information</p>
+            </div>
+            <div id="userInfo">
+                <form class="info-form"action="/pass-change" method="post">
+                    <fieldset class="field">
+                        <label for="password">Password</label>
+                        <input id="password" name="password" type="password" placeholder="Password">
+                    </fieldset>
+                    <fieldset class="field">
+                        <label for="confirmation">Confirmation</label>
+                        <input id="confirmation" name="confirmation" type="password" placeholder="Rewrite Password">
+                    </fieldset>
+                    <div>
+                        <button id="form-button"class="btn btn-primary" onclick="bubbleSound()">SAVE</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+         // Mini-todoo
+        document.querySelector('#newTodo').onkeyup = function() {
+         if (document.querySelector('#newTodo').value === '') {
+            document.querySelector('#newTodo-btn').disabled = true;
+         } else {
+            document.querySelector('#newTodo-btn').disabled = false;
+         }
+      }
+
+        function checkBox()
+        {
+            let checkbox = document.querySelector("#checkbox")
+            let label = document.querySelector("#checkbox-label")
+
+            if (checkbox.checked == true)
+            {
+                label.style.textDecoration = "line-through";
+                label.style.color="lightgrey";
+            }
+            else
+            {
+                label.style.textDecoration = "none";
+                label.style.color="black";
+            }
+        }
+    </script>
+{% endblock %}

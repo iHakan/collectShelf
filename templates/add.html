@@ -1,0 +1,225 @@
+{% extends "layout.html" %}
+
+{% block css%}
+
+<link href="/static/add.css" rel="stylesheet">
+<link rel="stylesheet" href="/static/todo.css">
+{% endblock %}
+
+{% block title %}
+    Add
+{% endblock %}
+
+{% block main %}
+    <!--Left Side-->
+    <div class="profileContainer">
+        <!---------------------------------------------- Left Column ------------------------------------------------->
+        <div id="left-column">
+            {% if userList %}
+            <div>
+                <h2>Welcome, {{ userList[0]["username"] }}! </h2>
+                <p id="unchange">{{ userList[0]["email"] }} </p>
+            </div>
+                <p>User ID: #{{iD}}</p>
+                <p>Enjoy your shelf!</p>
+            {% else %}
+                <p>Welcome, Guest #{{iD}} </p>
+                <p>Enjoy your shelf!</p>
+            {% endif %}
+        <div class="mini-todo-container">
+            <h3>Mini Todo</h3>
+            <form id="todo" action="/todo" method="post">
+                <!--LIST OF TODOS-->
+                {% if not todoList %}
+                <ul>
+                    <li id="todo-message">Add a New Todo Here</li>
+                </ul>
+                {% else %}
+                <ul id="ul-list">
+                    <!--FOR LOOP HERE-->
+                    {% for todo in todoList %}
+                    <li>
+                        <input id="checkbox" type="checkbox" name="checkbox" onclick="checkBox()">
+                        <label id="checkbox-label" for="checkbox">{{ todo['task'] }}</label>
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                <!--INPUT TEXT AND BUTTON-->
+                <input type="text" name="newTodo" id="newTodo" placeholder="Write todo">
+                <button id="newTodo-btn" class="btn btn-primary" disabled formaction="/todo"onclick="bubbleSound()">Add</button>
+            </form>
+        </div>
+        </div>
+        <!---------------------------------------------- Right Column ------------------------------------------------->
+        <div id="right-column">
+            <!--HEADER -->
+            <div id="right-column-group1">
+
+                <div id="userHeader">
+                    <h3>Add Info</h3>
+                    <p>Add anything to your shelf</p>
+                </div>
+                <div id="userInfo">
+                        <fieldset class="field vis">
+                            <label for="category">Category</label>
+                            <select name="category" id="category">
+                                <option value="" selected disabled>Choose Category</option>
+                                <option value="books">Books</option>
+                                <option value="items">Items</option>
+                            </select>
+                        </fieldset>
+                        <form id="books" class="info-form inv"action="/add" method="post">
+                            <!--Usage Category-->
+                            <fieldset class="field">
+                                <label for="category">Category</label>
+                                <select name="category" id="category">
+                                    <option value=""  disabled>Choose Category</option>
+                                    <option value="books" selected>Books</option>
+                                    <option value="items" disabled>Items</option>
+                                </select>
+                            </fieldset>
+
+                            <fieldset class="field">
+                                <label for="bUsage">Book Usage</label>
+                                <select name="bUsage" id="bUsage">
+                                    <option value="unread" selected>Unread</option>
+                                    <option value="read">Read</option>
+                                </select>
+                            </fieldset>
+                            <!--Name here-->
+                            <fieldset class="field">
+                                <label for="bName">Book Name</label>
+                                <input id="bName" name="bName" type="text" placeholder="Book name" required>
+                            </fieldset>
+                            <!--Writer Name-->
+                            <fieldset class="field">
+                                <label for="writer">Book Writer</label>
+                                <input id="writer" name="writer" type="text" placeholder="Writer Name" required>
+                            </fieldset>
+                            <!--Price-->
+                            <fieldset class="field">
+                                <label for="bPrice">Book Price</label>
+                                <input id="bPrice" name="bPrice" type="text" placeholder="Enter price here" required title="Enter '0' if it was a gift! ;)">
+                                <small> Add '0' dolars if it was a gift ;)</small>
+                            </fieldset>
+                            <fieldset class="field">
+                                <label for="bQuantity">Book Quantity</label>
+                                <input id="bQuantity" name="bQuantity" type="number" min="1" placeholder="Enter quantity here" required>
+                            </fieldset>
+                            <div>
+                                <button id="form-button"class="btn btn-primary"onclick="bubbleSound()">SAVE</button>
+                            </div>
+
+                        </form>
+
+                        <form id="items" class="info-form inv"action="/add" method="post">
+                            <!--Usage Category-->
+                            <fieldset class="field">
+                                <label for="category">Category</label>
+                                <select name="category" id="category">
+                                    <option value=""  disabled>Choose Category</option>
+                                    <option value="books" disabled>Books</option>
+                                    <option value="items"selected>Items</option>
+                                </select>
+                            </fieldset>
+                            <fieldset class="field">
+                                <label for="iUsage">Item Usage</label>
+                                <select name="iUsage" id="iUsage">
+                                    <option value="unused" selected>Unused</option>
+                                    <option value="used">used</option>
+                                </select>
+                            </fieldset>
+
+                            <!--Name here-->
+                            <fieldset class="field">
+                                <label for="iName">Item Name</label>
+                                <input id="iName" name="iName" type="text" placeholder="Item Name" required>
+                            </fieldset>
+                            <!--Writer Name-->
+                            <fieldset class="field">
+                                <label for="producer">Item Producer</label>
+                                <input id="producer" name="producer" type="text" placeholder="Producer Name" required>
+                            </fieldset>
+                            <!--Price-->
+                            <fieldset class="field">
+                                <label for="iPrice">Item Price</label>
+                                <input id="iPrice" name="iPrice" type="text" placeholder="Enter price here" required title="Enter '0' if it was a gift! ;)">
+                                <small> Add '0' dolars if it was a gift ;)</small>
+                            </fieldset>
+                            <fieldset class="field">
+                                <label for="iQuantity">Item Quantity</label>
+                                <input id="iQuantity" name="iQuantity" type="number" min="1" placeholder="Enter quantity here" required>
+                            </fieldset>
+                            <div>
+                                <button id="form-button"class="btn btn-primary"onclick="bubbleSound()">SAVE</button>
+                            </div>
+                        </form>
+                </div>
+            </div>
+            <!---------------------------------------------- Rightest Column Start------------------------------------------------->
+            <div id="rightest-column">
+                <!--HEADER -->
+                <div id="userHeader">
+                    <h3>Summary</h3>
+                    <p>Your last addition to your collection;</p>
+                    {% if not wholeList %}
+                    <p class="summary"><span>Lastly Added : </span>You did not add anything yet!</p>
+                    <p class="summary"><span>Made By      : </span>Unknown </p>
+                    <p class="summary"><span>Usage        : </span>Unknown </p>
+                    <p class="summary"><span>Quantity     : </span>Unknown </p>
+                    {% else %}
+                    <p class="summary"><span>Lastly Added : </span>{{ wholeList[(wholeList|length) - 1]["name"] }} </p>
+                    <p class="summary"><span>Made By      : </span>{{ wholeList[(wholeList|length) - 1]["producer"] }} </p>
+                    <p class="summary"><span>Usage        : </span>{{ wholeList[(wholeList|length) - 1]["usage"] }} </p>
+                    <p class="summary"><span>Quantity     : </span>{{ wholeList[(wholeList|length) - 1]["quantity"] }} </p>
+                    {% endif %}
+                </div>
+            </div>
+            <!---------------------------------------------- Rightest Column End------------------------------------------------->
+        </div>
+    </div>
+    <script>
+        // Category Section
+        let category = document.querySelector('#category');
+          category.addEventListener('change', function(){
+              'use strict';
+              var vis = document.querySelector(".vis");
+              var target = document.getElementById(this.value);
+              if (vis !== null)
+              {
+                  vis.className = 'inv';
+              }
+              if (target !== null)
+              {
+                  target.className = 'vis';
+              }
+          });
+
+          // Mini-todoo
+        document.querySelector('#newTodo').onkeyup = function() {
+         if (document.querySelector('#newTodo').value === '') {
+            document.querySelector('#newTodo-btn').disabled = true;
+         } else {
+            document.querySelector('#newTodo-btn').disabled = false;
+         }
+      }
+
+        function checkBox()
+        {
+            let checkbox = document.querySelector("#checkbox")
+            let label = document.querySelector("#checkbox-label")
+
+            if (checkbox.checked == true)
+            {
+                label.style.textDecoration = "line-through";
+                label.style.color="lightgrey";
+            }
+            else
+            {
+                label.style.textDecoration = "none";
+                label.style.color="black";
+            }
+        }
+    </script>
+{% endblock %}

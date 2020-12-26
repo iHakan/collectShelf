@@ -1,0 +1,160 @@
+*{
+    padding:0;
+    margin:0;
+    box-sizing:border-box;
+}
+
+nav .navbar-brand
+{
+    /* size for brand */
+    font-size: x-large;
+}
+
+/* colors for brand */
+nav .navbar-brand .blue
+{
+    color: white;
+}
+nav .navbar-brand .red
+{
+    color: #ea433b;
+}
+nav .navbar-brand .yellow
+{
+    color: #f5b82e;
+}
+nav .navbar-brand .green
+{
+    color: #2e944b;
+}
+
+main .form-control
+{
+    /* center form controls */
+    display: inline-block;
+
+    /* override Bootstrap's 100% width for form controls */
+    width: auto;
+}
+
+main
+{
+    /* scroll horizontally as needed */
+    overflow-x: auto;
+
+    /* center contents */
+    text-align: center;
+}
+
+main img
+{
+    /* constrain images on small screens */
+    max-width: 100%;
+}
+
+.navbar{
+    padding:0 1rem!important;
+}
+
+.border{
+    border:0!important;
+}
+
+.p-5{
+    padding:1rem !important;
+}
+
+#logo{
+    width:30px;
+    height:30px;
+    margin-left:10px;
+    margin-bottom:10px;
+}
+
+#formContainer{
+    margin:0 auto;
+    width:50%;
+}
+
+#submit{
+    width:200px;
+    border-radius:25px;
+}
+
+.form-control{
+    border-radius:25px;
+}
+
+#profileIMG{
+    background-color: grey;
+}
+
+/****************SCROLL UP BUTTON *****************/
+.goUp {
+    text-decoration: none;
+    color:crimson;
+    font-weight: 700;
+
+}
+
+.scroll-up-container {
+    position: fixed;
+    width: 100px;
+    height: 100px;
+    right: 20px;
+    bottom: 20px;
+    z-index: 1;
+    color:crimson;
+    border-radius: 50%;
+    cursor:pointer;
+}
+
+.scroll-up-container img {
+    margin:0 auto;
+
+}
+
+/*******************SCROLL BAR********************/
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  /* background: rgb(238,174,202); */
+  background: radial-gradient(
+    circle,
+    rgb(243, 245, 137) 0%,
+    rgb(161, 235, 177) 100%
+  );
+
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+}
+::-webkit-scrollbar-thumb:hover {
+
+  background: radial-gradient(
+    circle,
+    rgb(255, 255, 255) 0%,
+    rgb(223, 223, 223) 100%
+  );
+}
+
+.layout-footer {
+    width:100% !important;
+    position:relative;
+    bottom:0;
+    text-align:center !important;
+    color:#343A40 !important;
+    font-size:14px !important;
+    font-weight: 500 !important;
+}
+

@@ -1,0 +1,171 @@
+{% extends "layout.html" %}
+
+{% block css%}
+
+<link href="/static/items.css" rel="stylesheet">
+{% endblock %}
+
+{% block title %}
+    Items
+{% endblock %}
+
+{% block main %}
+<div class="profileContainer">
+    <div id="table-container">
+        <div id="sides-container">
+          <!-----------------------------------LEFT TABLE------------------------------------------>
+          <div id="sides">
+              {% if not itemsList%}
+              <table class="table">
+                    <thead>
+                      <tr>
+                        <th style="text-align:left;" scope="col">Name</th>
+                        <th style="text-align:left;" scope="col">Producer</th>
+                        <th scope="col">Usage</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Quantity</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row"></th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+              </table>
+              {% else %}
+              <table class="table">
+                    <thead>
+                      <tr>
+                        <th style="text-align:left;" scope="col">Name</th>
+                        <th style="text-align:left;" scope="col">Producer</th>
+                        <th scope="col">Usage</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Quantity</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for item in itemsList %}
+                      <tr>
+                        <td style="text-align:left;">{{ item["name"] }}</td>
+                        <td style="text-align:left;">{{ item["producer"] }}</td>
+                        <td>{{ item["usage"] }}</td>
+                        <td>{{ item["price"] | usd }}</td>
+                        <td>{{ item["quantity"] }}</td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+              </table>
+              {% endif %}
+          </div>
+          <div id="below">
+                <table>
+                    <tr>
+                      {% if not unusedQ %}
+                      <td>
+                        Total Unused Item : No item
+                      </td>
+                      {% else %}
+                      <td>
+                        Total Unused Item : {{ unusedQ }}
+                      </td>
+                      {% endif %}
+                    </tr>
+                    <tr>
+                      {% if not unusedP %}
+                      <td>
+                        Total Expense on Unused Items : $0.00
+                      </td>
+                      {% else %}
+                      <td>
+                        Total Expense on Unused Items : {{ unusedP | usd }}
+                      </td>
+                      {% endif %}
+
+                    </tr>
+                </table>
+              </div>
+        </div>
+          <!-----------------------------------RIGHT TABLE------------------------------------------>
+        <div id="sides-container">
+            <div id="sides">
+                {% if not usedList%}
+                <table class="table">
+                      <thead>
+                        <tr>
+                          <th style="text-align:left;" scope="col">Name</th>
+                          <th style="text-align:left;" scope="col">Producer</th>
+                          <th scope="col">Usage</th>
+                          <th scope="col">Price</th>
+                          <th scope="col">Quantity</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th scope="row"></th>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                        </tr>
+                      </tbody>
+                </table>
+                {% else %}
+                <table class="table">
+                      <thead>
+                        <tr>
+                          <th style="text-align:left;" scope="col">Name</th>
+                          <th style="text-align:left;" scope="col">Producer</th>
+                          <th scope="col">Usage</th>
+                          <th scope="col">Price</th>
+                          <th scope="col">Quantity</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for used in usedList %}
+                        <tr>
+                          <td style="text-align:left;">{{ used["name"] }}</td>
+                          <td style="text-align:left;">{{ used["producer"] }}</td>
+                          <td>{{ used["usage"] }}</td>
+                          <td>{{ used["price"] | usd }}</td>
+                          <td>{{ used["quantity"] }}</td>
+                        </tr>
+                        {% endfor %}
+                      </tbody>
+                </table>
+                {% endif %}
+            </div>
+            <!----------------------RIGHT BELOW TABLE ----------------------->
+            <div id="below">
+                <table>
+                    <tr>
+                      {% if not usedQ %}
+                      <td>
+                        Total Used Item : No used item
+                      </td>
+                      {% else %}
+                      <td>
+                        Total Used Item : {{ usedQ }}
+                      </td>
+                      {% endif %}
+                    </tr>
+                    <tr>
+                      {% if not usedP %}
+                      <td>
+                        Total Expense on Used Items : $0.00
+                      </td>
+                      {% else %}
+                      <td>
+                        Total Expense on Used Items : {{ usedP | usd }}
+                      </td>
+                      {% endif %}
+                    </tr>
+                </table>
+              </div>
+        </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

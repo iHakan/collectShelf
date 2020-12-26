@@ -1,0 +1,252 @@
+* {
+    padding:0;
+    margin:0;
+    box-sizing:border-box;
+}
+
+/*For the left side of the page */
+#left-column{
+    text-align:left;
+    float:left;
+    background-color: #FBFBFB;
+    width:15%;
+    height:800px;
+    border-radius:4px;
+    box-shadow: 2px 5px 10px lightgrey;
+}
+
+#left-column p {
+    margin: 10px 10px;
+    background-color: tomato;
+    color:white;
+    font-weight: 500;
+    padding-left:10px;
+    border-radius: 5px;
+}
+#left-column h2 {
+    margin-top:10px;
+    text-align:center;
+    color:#343A40;
+}
+#unchange {
+    background:none !important;
+    text-align:center;
+    font-weight:400;
+    color:crimson !important;
+    padding-left:0 !important;
+}
+
+#left-column span {
+    margin: 0 10px;
+    text-align:center;
+}
+
+
+
+.container {
+    margin-left:0 !important;
+    display:flex;
+    flex-direction:column;
+}
+/*For the right side of the page */
+#right-column{
+    text-align:center;
+    border-radius:4px;
+    display:flex;
+    justify-content:flex-start;
+    float:right;
+    margin-left:5px;
+    background-color: #FBFBFB;
+    width:84.5%;
+    height:800px;
+    padding-top:20px;
+    box-shadow: 0 5px 10px lightgrey;
+}
+
+#userHeader {
+    text-align:left;
+    margin: 10px 20px;
+}
+
+#userHeader p {
+    color: crimson;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+#userInfo {
+    border-radius:4px;
+    width:95%;
+    height:65%;
+    text-align:left;
+    margin: 20px 20px;
+    background-color:white;
+    box-shadow:0 2px 10px #DCDCDC;
+    margin-bottom:60px;
+}
+
+.info-form{
+    border-radius:4px;
+    padding:5px 5px;
+}
+
+.field {
+    margin: 0 auto;
+    display:flex;
+    flex-direction:column;
+    margin: 10px 10px;
+}
+
+.field input, select{
+    border: 1px solid grey;
+    padding:2.5px;
+    border-radius:5px;
+}
+
+#form-button{
+    float:right;
+    margin:0 10px;
+    color:lightseagreen;
+    background-color: #fff;
+    border:2px solid lightseagreen;
+    font-weight: 500;
+    margin-bottom:20px;
+    width:80px;
+}
+
+#form-button:hover{
+    background-color: lightseagreen;
+    color:white;
+}
+
+.inv{
+    display:none;
+}
+
+/**********************Rightest Column**********************************/
+#right-column-group1{
+    width:55%;
+    margin-right:0;
+}
+
+#rightest-column {
+    border-radius:4px;
+    margin-top:95px;
+    width:43%!important;
+    height:300px;
+    background-color: #fff;
+    box-shadow:0 2px 10px #DCDCDC;
+}
+.summary {
+    color:grey !important;
+}
+.summary span {
+    color:darkcyan;
+}
+/********FOR BUTTONS*******/
+/*
+.bookButtons{
+    padding:20px;
+}
+
+.buttonLeft {
+    background-color:dodgerblue;
+    color:white;
+    border-radius:5px;
+    box-shadow: 0 1px 8px grey;
+    font-weight: 500;
+    cursor:pointer;
+}
+.buttonLeft:hover{
+    background-color: orange;
+    color:white;
+    transition: 0.2s ease;
+}*/
+
+/* Media Section*/
+@media (min-width: 1200px){
+    .container {
+        max-width: 100%;
+    }
+
+    #rightest-column {
+        width:30%;
+    }
+}
+
+@media only screen and (max-width: 1200px){
+    .container{
+        min-width:100%;
+    }
+    .profileContainer{
+        display:flex;
+    }
+}
+
+@media (max-width: 768px){
+
+    #right-column{
+        flex-direction:column;
+        height :1000px!important;
+    }
+
+
+    #right-column-group1{
+        width:100%;
+    }
+
+    #rightest-column {
+        margin-top:0;
+        width:90% !important;
+        margin:0 20px;
+        height:300px;
+    }
+}
+
+/*For the rightest column between 1000 and 1200 pxs */
+@media only screen and (min-width:1001px) and (max-width:1199px){
+    #rightest-column {
+        right:55px;
+        width:27%;
+    }
+}
+
+/*For Add Route Responsiveness*/
+@media only screen and (max-width: 1000px){
+
+    .profileContainer{
+        display:flex;
+        flex-direction:column;
+    }
+
+    #left-column{
+        text-align:center;
+        margin:20px auto;
+        width:100%;
+        height:auto;
+    }
+
+    #right-column{
+        margin-left:0;
+        width:100%;
+        height:650px;
+    }
+
+    #userInfo {
+        width:90%;
+        height:510px;
+    }
+
+    #rightest-column {
+
+        right:5%;
+        left:4.5%;
+        width:90%;
+
+    }
+
+    .p-5{
+        padding:10px!important;
+
+    }
+}

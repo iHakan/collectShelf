@@ -1,0 +1,182 @@
+* {
+    padding:0;
+    margin:0;
+    box-sizing:border-box;
+}
+
+/*For the left side of the page */
+#left-column{
+    text-align:left;
+    float:left;
+    background-color: #FDFDFD;
+    width:15%;
+    height:800px;
+    border-radius:4px;
+    box-shadow: 2px 5px 10px lightgrey;
+}
+
+#left-column p {
+    margin: 10px 10px;
+    background-color: tomato;
+    color:white;
+    font-weight: 500;
+    padding-left:10px;
+    border-radius: 5px;
+}
+#left-column h2 {
+    margin-top:10px;
+    text-align:center;
+    color:#343A40;
+}
+#unchange {
+    background:none !important;
+    text-align:center;
+    font-weight:400;
+    color:crimson !important;
+    padding-left:0!important;
+}
+
+#left-column span {
+    margin: 0 10px;
+    text-align:center;
+}
+.container {
+    margin-left:0 !important;
+    display:flex;
+    flex-direction:column;
+}
+/*For the right side of the page */
+#right-column{
+    text-align:center;
+    border-radius:4px;
+    float:right;
+    margin-left:5px;
+    background-color: #FDFDFD;
+    width:84.5%;
+    height:800px;
+    box-shadow: 0 5px 10px lightgrey;
+}
+
+#userHeader {
+    text-align:left;
+    margin: 10px 20px;
+}
+
+#userHeader p {
+    color: crimson;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+#userInfo {
+    border-radius:4px;
+    width:60%;
+    height:30%;
+    text-align:left;
+    margin: 20px 20px;
+    background-color:white;
+    box-shadow:0 0 5px #DCDCDC;
+    margin-bottom:60px;
+}
+
+.info-form{
+    border-radius:4px;
+    padding:5px 5px;
+}
+
+.field {
+    margin: 0 auto;
+    display:flex;
+    flex-direction:column;
+    margin: 20px 10px;
+}
+
+.field input{
+    border: 1px solid grey;
+    padding:2.5px;
+    border-radius:5px;
+}
+
+#form-button{
+    float:right;
+    margin:0 10px;
+    color:lightseagreen;
+    background-color: #fff;
+    border:2px solid lightseagreen;
+    font-weight: 500;
+    margin-bottom:20px;
+    width:80px;
+}
+
+#form-button:hover{
+    background-color: lightseagreen;
+    color:white;
+}
+/********FOR BUTTONS*******/
+/*
+.bookButtons{
+    padding:20px;
+}
+
+.buttonLeft {
+    background-color:dodgerblue;
+    color:white;
+    border-radius:5px;
+    box-shadow: 0 1px 8px grey;
+    font-weight: 500;
+    cursor:pointer;
+}
+.buttonLeft:hover{
+    background-color: orange;
+    color:white;
+    transition: 0.2s ease;
+}*/
+
+/* Media Section*/
+@media (min-width: 1200px){
+    .container {
+        max-width: 100%;
+    }
+}
+
+@media only screen and (max-width: 1200px){
+    .container{
+        min-width:100%;
+    }
+    .profileContainer{
+        display:flex;
+    }
+}
+
+@media (max-width: 768px){
+    .container{
+        min-width:50%;
+    }
+}
+
+/* For Profile route responsiveness*/
+@media only screen and (max-width: 1000px){
+
+    .profileContainer{
+        display:flex;
+        flex-direction:column;
+    }
+
+    #left-column{
+        text-align:center;
+        margin:20px auto;
+        width:100%;
+        height:200px;
+    }
+
+    #right-column{
+        margin-left:0;
+        width:100%;
+        height:auto;
+    }
+
+    #userInfo {
+        width:90%;
+        height:250px;
+    }
+}

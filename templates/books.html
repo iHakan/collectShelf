@@ -1,0 +1,171 @@
+{% extends "layout.html" %}
+
+{% block css%}
+
+<link href="/static/books.css" rel="stylesheet">
+{% endblock %}
+
+{% block title %}
+    Books
+{% endblock %}
+
+{% block main %}
+<div class="profileContainer">
+    <div id="table-container">
+        <div id="sides-container">
+          <!-----------------------------------LEFT TABLE------------------------------------------>
+          <div id="sides">
+              {% if not booksList%}
+              <table class="table">
+                    <thead>
+                      <tr>
+                        <th style="text-align:left;" scope="col">Name</th>
+                        <th style="text-align:left;" scope="col">Writer</th>
+                        <th scope="col">Usage</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Quantity</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row"></th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+              </table>
+              {% else %}
+              <table class="table">
+                    <thead>
+                      <tr>
+                        <th style="text-align:left;" scope="col">Name</th>
+                        <th style="text-align:left;" scope="col">Writer</th>
+                        <th scope="col">Usage</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Quantity</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for book in booksList %}
+                      <tr>
+                        <td style="text-align:left;">{{ book["name"] }}</td>
+                        <td style="text-align:left;">{{ book["writer"] }}</td>
+                        <td>{{ book["usage"] }}</td>
+                        <td>{{ book["price"] | usd }}</td>
+                        <td>{{ book["quantity"] }}</td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+              </table>
+              {% endif %}
+          </div>
+          <div id="below">
+                <table>
+                    <tr>
+                      {% if not unreadQ %}
+                      <td>
+                        Total Unread Books : No book
+                      </td>
+                      {% else %}
+                      <td>
+                        Total Unread Books : {{ unreadQ }}
+                      </td>
+                      {% endif %}
+                    </tr>
+                    <tr>
+                      {% if not unreadP %}
+                      <td>
+                        Total Expense on Unread Books : $0.00
+                      </td>
+                      {% else %}
+                      <td>
+                        Total Expense on Unread Books : {{ unreadP | usd }}
+                      </td>
+                      {% endif %}
+
+                    </tr>
+                </table>
+              </div>
+        </div>
+          <!-----------------------------------RIGHT TABLE------------------------------------------>
+        <div id="sides-container">
+            <div id="sides">
+                {% if not readList%}
+                <table class="table">
+                      <thead>
+                        <tr>
+                          <th style="text-align:left;" scope="col">Name</th>
+                          <th style="text-align:left;" scope="col">Writer</th>
+                          <th scope="col">Usage</th>
+                          <th scope="col">Price</th>
+                          <th scope="col">Quantity</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th scope="row"></th>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                        </tr>
+                      </tbody>
+                </table>
+                {% else %}
+                <table class="table">
+                      <thead>
+                        <tr>
+                          <th style="text-align:left;" scope="col">Name</th>
+                          <th style="text-align:left;" scope="col">Writer</th>
+                          <th scope="col">Usage</th>
+                          <th scope="col">Price</th>
+                          <th scope="col">Quantity</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for read in readList %}
+                        <tr>
+                          <td style="text-align:left;">{{ read["name"] }}</td>
+                          <td style="text-align:left;">{{ read["writer"] }}</td>
+                          <td>{{ read["usage"] }}</td>
+                          <td>{{ read["price"] | usd }}</td>
+                          <td>{{ read["quantity"] }}</td>
+                        </tr>
+                        {% endfor %}
+                      </tbody>
+                </table>
+                {% endif %}
+            </div>
+            <!----------------------RIGHT BELOW TABLE ----------------------->
+            <div id="below">
+                <table>
+                    <tr>
+                      {% if not readQ %}
+                      <td>
+                        Total Read Books : No Writer item
+                      </td>
+                      {% else %}
+                      <td>
+                        Total Read Books : {{ readQ }}
+                      </td>
+                      {% endif %}
+                    </tr>
+                    <tr>
+                      {% if not readP %}
+                      <td>
+                        Total Expense on Read Books : $0.00
+                      </td>
+                      {% else %}
+                      <td>
+                        Total Expense on Read Books : {{ readP | usd }}
+                      </td>
+                      {% endif %}
+                    </tr>
+                </table>
+              </div>
+        </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
