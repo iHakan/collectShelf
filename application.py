@@ -1,4 +1,5 @@
 import os
+from flask_sqlalchemy import SQLAlchemy
 from cs50 import SQL
 from flask import Flask, flash, jsonify, redirect, render_template, request, session
 from flask_session import Session
@@ -21,11 +22,10 @@ app.jinja_env.filters["usd"] = usd
 app.config["SESSION_FILE_DIR"] = mkdtemp()
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
-Session(app)
 
 # Configure CS50 Library to use SQLite database
-db = SQL(os.getenv("postgres://szcujmeigcqeju:f5f23e546c139436651755b3a7fe94c3c4050723c28f3ff2045972db0f4e7cfd@ec2-75-101-212-64.compute-1.amazonaws.com:5432/db08ur69kqeth4"))
-
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///shelf.db'
+db.SQLAlchemy(app)
 
 @app.route("/")
 def index():
