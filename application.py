@@ -1,4 +1,5 @@
 import os
+import db
 from flask_sqlalchemy import SQLAlchemy
 from cs50 import SQL
 from flask import Flask, flash, jsonify, redirect, render_template, request, session
@@ -7,6 +8,7 @@ from tempfile import mkdtemp
 from werkzeug.exceptions import default_exceptions, HTTPException, InternalServerError
 from werkzeug.security import check_password_hash, generate_password_hash
 from helpers import apology, login_required, usd
+
 
 
 # Configure application
@@ -27,7 +29,7 @@ app.config["SESSION_TYPE"] = "filesystem"
 # Configure CS50 Library to use SQLite database
 app.config['SQLALCHEMY_DATABASE_URI']=os.environ.get('DATABASE_URL')
 
-db.SQLAlchemy()
+db=SQLAlchemy(app)
 
 @app.route("/")
 def index():
