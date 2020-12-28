@@ -27,7 +27,7 @@ app.config["SESSION_TYPE"] = "filesystem"
 # Configure CS50 Library to use SQLite database
 app.config['SQLALCHEMY_DATABASE_URI']=os.environ.get('DATABASE_URL')
 
-db.SQLAlchemy(app)
+db.SQLAlchemy()
 
 @app.route("/")
 def index():
