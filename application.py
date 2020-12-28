@@ -11,7 +11,7 @@ from helpers import apology, login_required, usd
 
 # Configure application
 app = Flask(__name__)
-
+app.secret_key=os.environ.get('SECRET')
 # Ensure templates are auto-reloaded
 app.config["TEMPLATES_AUTO_RELOAD"] = True
 
@@ -24,7 +24,8 @@ app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 
 # Configure CS50 Library to use SQLite database
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///shelf.db'
+app.config['SQLALCHEMY_DATABASE_URI']=os.environ.get('DATABASE_URL')
+
 db.SQLAlchemy(app)
 
 @app.route("/")
@@ -436,3 +437,7 @@ def errorhandler(e):
 # Listen for errors
 for code in default_exceptions:
     app.errorhandler(code)(errorhandler)
+
+
+if __name__ == '__main__':
+    app.run()
