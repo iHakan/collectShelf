@@ -12,6 +12,7 @@ from helpers import apology, login_required, usd
 # Configure application
 app = Flask(__name__)
 app.secret_key=os.environ.get('SECRET')
+
 # Ensure templates are auto-reloaded
 app.config["TEMPLATES_AUTO_RELOAD"] = True
 
