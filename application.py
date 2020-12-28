@@ -1,5 +1,4 @@
 import os
-import db
 from flask_sqlalchemy import SQLAlchemy
 from cs50 import SQL
 from flask import Flask, flash, jsonify, redirect, render_template, request, session
@@ -8,6 +7,7 @@ from tempfile import mkdtemp
 from werkzeug.exceptions import default_exceptions, HTTPException, InternalServerError
 from werkzeug.security import check_password_hash, generate_password_hash
 from helpers import apology, login_required, usd
+from.import db
 
 
 
@@ -441,6 +441,6 @@ def errorhandler(e):
 for code in default_exceptions:
     app.errorhandler(code)(errorhandler)
 
-
+# Heroku purposes
 if __name__ == '__main__':
     app.run()
