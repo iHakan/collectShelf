@@ -1,4 +1,5 @@
 import os
+from flask_sqlalchemy import SQLAlchemy
 from cs50 import SQL
 from flask import Flask, flash, jsonify, redirect, render_template, request, session
 from flask_session import Session
@@ -27,7 +28,7 @@ app.config["SESSION_TYPE"] = "filesystem"
 # Configure CS50 Library to use SQLite database
 app.config['SQLALCHEMY_DATABASE_URI']=os.environ.get('DATABASE_URL')
 
-Session(app)
+db=SQLAlchemy(app)
 
 @app.route("/")
 def index():
