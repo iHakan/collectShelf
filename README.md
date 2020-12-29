@@ -279,7 +279,7 @@ _Note: All the buttons in this project contains "onclick" property that contains
 > <img src="./images/facebook-24x24.png" alt="facebook" width=15 height=15> <a href="https://www.facebook.com/hqkqn337/" target="_blank">Facebook</a>
 > <img src="./images/linkedin-24x24.png" alt="linkedin" width=15 height=15> <a href="https://www.linkedin.com/in/hakanyildiz248/" target="_blank">Linkedin</a>  
 
-> [For Demo](https://www.youtube.com/watch?v=pEDDjnqpvSk&t=9s)
+> [Click here for the Demo video of the project](https://www.youtube.com/watch?v=pEDDjnqpvSk&t)
 
 </br>
 <div align="center">
