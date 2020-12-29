@@ -277,7 +277,9 @@ _Note: All the buttons in this project contains "onclick" property that contains
 > 📧 [Mail Me](mailto:hakanyildiz248@gmail.com)
 > <img src="./images/twitter-24x24.png" alt="twitter" width=15 height=15> <a href="https://twitter.com/zidliynakah" target="_blank">Twitter</a>
 > <img src="./images/facebook-24x24.png" alt="facebook" width=15 height=15> <a href="https://www.facebook.com/hqkqn337/" target="_blank">Facebook</a>
-> <img src="./images/linkedin-24x24.png" alt="linkedin" width=15 height=15> <a href="https://www.linkedin.com/in/hakanyildiz248/" target="_blank">Linkedin</a>
+> <img src="./images/linkedin-24x24.png" alt="linkedin" width=15 height=15> <a href="https://www.linkedin.com/in/hakanyildiz248/" target="_blank">Linkedin</a>  
+
+> [For Demo](https://www.youtube.com/watch?v=pEDDjnqpvSk&t=9s)
 
 </br>
 <div align="center">
